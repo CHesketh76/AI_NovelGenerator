@@ -1,6 +1,8 @@
 # 📖 Automated Novel Generation Tool
 <div align="center">
+  
 ✨ **Core Features** ✨
+
 | Function Module          | Key Capabilities                          |
 |--------------------------|-------------------------------------------|
 | 🎨 Novel Setting Workshop | Worldview Architecture / Character Setting / Plot Blueprint |
@@ -10,8 +12,11 @@
 | 📚 Knowledge Base Integration | Support for Local Document References |
 | ✅ Automatic Review Mechanism | Detects Plot Contradictions and Logical Conflicts |
 | 🖥 Visual Workbench | Full-process GUI Operation, Integrated Configuration/Generation/Review |
+
 </div>
+
 > A multi-functional novel generator based on large language models, helping you efficiently create long stories with rigorous logic and consistent settings
+
 ---
 
 ## 📑 Table of Contents
