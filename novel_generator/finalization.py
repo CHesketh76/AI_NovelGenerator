@@ -111,9 +111,9 @@ def enrich_chapter_text(
         max_tokens=max_tokens,
         timeout=timeout
     )
-    prompt = f"""以下章节文本较短，请在保持剧情连贯的前提下进行扩写，使其更充实，接近 {word_number} 字左右：
-原内容：
-{chapter_text}
-"""
+    prompt = f"""The following chapter text is short. Please expand it while maintaining the continuity of the plot, making it more substantial, approaching {word_number} words:
+    Original content:
+    {chapter_text}
+    """
     enriched_text = invoke_with_cleaning(llm_adapter, prompt)
     return enriched_text if enriched_text else chapter_text

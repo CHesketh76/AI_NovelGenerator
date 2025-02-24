@@ -59,13 +59,13 @@ def import_knowledge_file(
     file_path: str,
     filepath: str
 ):
-    logging.info(f"开始导入知识库文件: {file_path}, 接口格式: {embedding_interface_format}, 模型: {embedding_model_name}")
+    logging.info(f"Start importing knowledge base file: {file_path}, Interface format: {embedding_interface_format}, Model: {embedding_model_name}")
     if not os.path.exists(file_path):
-        logging.warning(f"知识库文件不存在: {file_path}")
+        logging.warning(f"Knowledge base file does not exist: {file_path}")
         return
     content = read_file(file_path)
     if not content.strip():
-        logging.warning("知识库文件内容为空。")
+        logging.warning("The content of the knowledge base file is empty.")
         return
     paragraphs = advanced_split_content(content)
     from embedding_adapters import create_embedding_adapter
@@ -80,14 +80,14 @@ def import_knowledge_file(
         logging.info("Vector store does not exist or load failed. Initializing a new one for knowledge import...")
         store = init_vector_store(embedding_adapter, paragraphs, filepath)
         if store:
-            logging.info("知识库文件已成功导入至向量库(新初始化)。")
+            logging.info("Knowledge base file has been successfully imported into the vector store (new initialization).")
         else:
-            logging.warning("知识库导入失败，跳过。")
+            logging.warning("Knowledge base import failed, skipping.")
     else:
         try:
             docs = [Document(page_content=str(p)) for p in paragraphs]
             store.add_documents(docs)
-            logging.info("知识库文件已成功导入至向量库(追加模式)。")
+            logging.info("Knowledge base file has been successfully imported into the vector store (append mode).")
         except Exception as e:
-            logging.warning(f"知识库导入失败: {e}")
+            logging.warning(f"Knowledge base import failed: {e}")
             traceback.print_exc()

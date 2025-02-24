@@ -4,23 +4,24 @@ from llm_adapters import create_llm_adapter
 
 # ============== 增加对“剧情要点/未解决冲突”进行检查的可选引导 ==============
 CONSISTENCY_PROMPT = """\
-请检查下面的小说设定与最新章节是否存在明显冲突或不一致之处，如有请列出：
-- 小说设定：
+Please check for any obvious conflicts or inconsistencies between the novel's setting and the latest chapter. If any are found, list them:
+
+- Novel Setting:
 {novel_setting}
 
-- 角色状态（可能包含重要信息）：
+- Character States (may contain important information):
 {character_state}
 
-- 全局摘要：
+- Global Summary:
 {global_summary}
 
-- 已记录的未解决冲突或剧情要点：
-{plot_arcs}  # 若为空可能不输出
+- Recorded Unresolved Conflicts or Plot Points:
+{plot_arcs}  # May not be output if empty
 
-- 最新章节内容：
+- Latest Chapter Content:
 {chapter_text}
 
-如果存在冲突或不一致，请说明；如果在未解决冲突中有被忽略或需要推进的地方，也请提及；否则请返回“无明显冲突”。
+If there are any conflicts or inconsistencies, please explain. If there are any unresolved conflicts that have been ignored or need to be advanced, please mention them as well. Otherwise, return “No obvious conflicts”.
 """
 
 def check_consistency(
@@ -64,8 +65,8 @@ def check_consistency(
 
     response = llm_adapter.invoke(prompt)
     if not response:
-        return "审校Agent无回复"
-    
+        return "Review Agent has not responded"
+
     # 调试日志
     print("[ConsistencyChecker] Response <<<", response)
 

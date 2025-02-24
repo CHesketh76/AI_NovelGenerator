@@ -4,16 +4,16 @@ import re
 
 def parse_chapter_blueprint(blueprint_text: str):
     """
-    解析整份章节蓝图文本，返回一个列表，每个元素是一个 dict：
+    Parse the entire chapter blueprint text and return a list where each element is a dictionary:
     {
       "chapter_number": int,
       "chapter_title": str,
-      "chapter_role": str,       # 本章定位
-      "chapter_purpose": str,    # 核心作用
-      "suspense_level": str,     # 悬念密度
-      "foreshadowing": str,      # 伏笔操作
-      "plot_twist_level": str,   # 认知颠覆
-      "chapter_summary": str     # 本章简述
+      "chapter_role": str,       # Chapter Positioning
+      "chapter_purpose": str,    # Core Function
+      "suspense_level": str,     # Suspense Density
+      "foreshadowing": str,      # Foreshadowing
+      "plot_twist_level": str,   # Cognitive Subversion
+      "chapter_summary": str     # Summary of the Chapter
     }
     """
 
@@ -26,14 +26,23 @@ def parse_chapter_blueprint(blueprint_text: str):
     #   第1章 - 紫极光下的预兆
     # 或
     #   第1章 - [紫极光下的预兆]
-    chapter_number_pattern = re.compile(r'^第\s*(\d+)\s*章\s*-\s*\[?(.*?)\]?$')
+    # chapter_number_pattern = re.compile(r'^第\s*(\d+)\s*章\s*-\s*\[?(.*?)\]?$')
 
-    role_pattern     = re.compile(r'^本章定位：\s*\[?(.*)\]?$')
-    purpose_pattern  = re.compile(r'^核心作用：\s*\[?(.*)\]?$')
-    suspense_pattern = re.compile(r'^悬念密度：\s*\[?(.*)\]?$')
-    foreshadow_pattern = re.compile(r'^伏笔操作：\s*\[?(.*)\]?$')
-    twist_pattern       = re.compile(r'^认知颠覆：\s*\[?(.*)\]?$')
-    summary_pattern = re.compile(r'^本章简述：\s*\[?(.*)\]?$')
+    # role_pattern     = re.compile(r'^本章定位：\s*\[?(.*)\]?$')
+    # purpose_pattern  = re.compile(r'^核心作用：\s*\[?(.*)\]?$')
+    # suspense_pattern = re.compile(r'^悬念密度：\s*\[?(.*)\]?$')
+    # foreshadow_pattern = re.compile(r'^伏笔操作：\s*\[?(.*)\]?$')
+    # twist_pattern       = re.compile(r'^认知颠覆：\s*\[?(.*)\]?$')
+    # summary_pattern = re.compile(r'^本章简述：\s*\[?(.*)\]?$')
+    #
+    chapter_number_pattern = re.compile(r'^Chapter\s*(\d+)\s*-\s*\[?(.*?)\]?$')
+
+    role_pattern = re.compile(r'^Chapter Positioning:\s*\[?(.*)\]?$')
+    purpose_pattern = re.compile(r'^Core Function:\s*\[?(.*)\]?$')
+    suspense_pattern = re.compile(r'^Suspense Density:\s*\[?(.*)\]?$')
+    foreshadow_pattern = re.compile(r'^Foreshadowing Operations:\s*\[?(.*)\]?$')
+    twist_pattern = re.compile(r'^Cognitive Upheaval:\s*\[?(.*)\]?$')
+    summary_pattern = re.compile(r'^Chapter Summary:\s*\[?(.*)\]?$')
 
     for chunk in chunks:
         lines = chunk.strip().splitlines()

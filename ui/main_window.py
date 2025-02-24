@@ -99,7 +99,7 @@ class NovelGeneratorGUI:
         if self.loaded_config and "other_params" in self.loaded_config:
             op = self.loaded_config["other_params"]
             self.topic_default = op.get("topic", "")
-            self.genre_var = ctk.StringVar(value=op.get("genre", "玄幻"))
+            self.genre_var = ctk.StringVar(value=op.get("genre", "Fantasy"))
             self.num_chapters_var = ctk.StringVar(value=str(op.get("num_chapters", 10)))
             self.word_number_var = ctk.StringVar(value=str(op.get("word_number", 3000)))
             self.filepath_var = ctk.StringVar(value=op.get("filepath", ""))
@@ -111,7 +111,7 @@ class NovelGeneratorGUI:
             self.user_guidance_default = op.get("user_guidance", "")
         else:
             self.topic_default = ""
-            self.genre_var = ctk.StringVar(value="玄幻")
+            self.genre_var = ctk.StringVar(value="Fantasy")
             self.num_chapters_var = ctk.StringVar(value="10")
             self.word_number_var = ctk.StringVar(value="3000")
             self.filepath_var = ctk.StringVar(value="")
@@ -174,7 +174,7 @@ class NovelGeneratorGUI:
         self.chapter_result.delete("0.0", "end")
         self.chapter_result.insert("0.0", text)
         self.chapter_result.see("end")
-    
+
     def test_llm_config(self):
         """
         测试当前的LLM配置是否可用
@@ -216,7 +216,7 @@ class NovelGeneratorGUI:
             log_func=self.safe_log,
             handle_exception_func=self.handle_exception
         )
-    
+
     def browse_folder(self):
         selected_dir = filedialog.askdirectory()
         if selected_dir:

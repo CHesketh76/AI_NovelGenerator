@@ -30,7 +30,7 @@ def clear_vector_store(filepath: str) -> bool:
         logging.info(f"Vector store directory '{store_dir}' removed.")
         return True
     except Exception as e:
-        logging.error(f"无法删除向量库文件夹，请关闭程序后手动删除 {store_dir}。\n {str(e)}")
+        logging.error(f"Unable to delete vector store directory, please close the program and manually delete {store_dir}.\n {str(e)}")
         traceback.print_exc()
         return False
 
@@ -136,20 +136,20 @@ def split_text_for_vectorstore(chapter_text: str, max_length: int = 500, similar
     """
     if not chapter_text.strip():
         return []
-    
+
     nltk.download('punkt', quiet=True)
     nltk.download('punkt_tab', quiet=True)
     sentences = nltk.sent_tokenize(chapter_text)
     if not sentences:
         return []
-    
+
     model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
     embeddings = model.encode(sentences)
-    
+
     merged_paragraphs = []
     current_sentences = [sentences[0]]
     current_embedding = embeddings[0]
-    
+
     for i in range(1, len(sentences)):
         sim = cosine_similarity([current_embedding], [embeddings[i]])[0][0]
         if sim >= similarity_threshold:
@@ -159,10 +159,10 @@ def split_text_for_vectorstore(chapter_text: str, max_length: int = 500, similar
             merged_paragraphs.append(" ".join(current_sentences))
             current_sentences = [sentences[i]]
             current_embedding = embeddings[i]
-    
+
     if current_sentences:
         merged_paragraphs.append(" ".join(current_sentences))
-    
+
     final_segments = []
     for para in merged_paragraphs:
         if len(para) > max_length:
@@ -170,7 +170,7 @@ def split_text_for_vectorstore(chapter_text: str, max_length: int = 500, similar
             final_segments.extend(sub_segments)
         else:
             final_segments.append(para)
-    
+
     return final_segments
 
 def update_vector_store(embedding_adapter, new_chapter: str, filepath: str):

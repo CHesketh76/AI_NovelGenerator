@@ -169,17 +169,17 @@ def Novel_architecture_generate(
     plot_arch_result = partial_data["plot_arch_result"]
 
     final_content = (
-        "#=== 0) 小说设定 ===\n"
-        f"主题：{topic},类型：{genre},篇幅：约{number_of_chapters}章（每章{word_number}字）\n\n"
-        "#=== 1) 核心种子 ===\n"
-        f"{core_seed_result}\n\n"
-        "#=== 2) 角色动力学 ===\n"
-        f"{character_dynamics_result}\n\n"
-        "#=== 3) 世界观 ===\n"
-        f"{world_building_result}\n\n"
-        "#=== 4) 三幕式情节架构 ===\n"
-        f"{plot_arch_result}\n"
-    )
+            "#=== 0) Novel Settings ===\n"
+            f"Theme: {topic}, Type: {genre}, Length: Approximately {number_of_chapters} chapters (each chapter {word_number} words)\n\n"
+            "#=== 1) Core Seed ===\n"
+            f"{core_seed_result}\n\n"
+            "#=== 2) Character Dynamics ===\n"
+            f"{character_dynamics_result}\n\n"
+            "#=== 3) Worldview ===\n"
+            f"{world_building_result}\n\n"
+            "#=== 4) Three-Act Plot Structure ===\n"
+            f"{plot_arch_result}\n"
+        )
 
     arch_file = os.path.join(filepath, "Novel_architecture.txt")
     clear_file_content(arch_file)

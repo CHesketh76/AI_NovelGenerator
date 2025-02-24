@@ -10,22 +10,22 @@ class TextWidgetContextMenu:
     def __init__(self, widget):
         self.widget = widget
         self.menu = tk.Menu(widget, tearoff=0)
-        self.menu.add_command(label="复制", command=self.copy)
-        self.menu.add_command(label="粘贴", command=self.paste)
-        self.menu.add_command(label="剪切", command=self.cut)
+        self.menu.add_command(label="Copy", command=self.copy)
+        self.menu.add_command(label="Paste", command=self.paste)
+        self.menu.add_command(label="Cut", command=self.cut)
         self.menu.add_separator()
-        self.menu.add_command(label="全选", command=self.select_all)
-        
+        self.menu.add_command(label="Select All", command=self.select_all)
+
         # 绑定右键事件
         self.widget.bind("<Button-3>", self.show_menu)
-        
+
     def show_menu(self, event):
         if isinstance(self.widget, ctk.CTkTextbox):
             try:
                 self.menu.tk_popup(event.x_root, event.y_root)
             finally:
                 self.menu.grab_release()
-            
+
     def copy(self):
         try:
             text = self.widget.get("sel.first", "sel.last")

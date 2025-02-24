@@ -12,7 +12,7 @@ def read_file(filename: str) -> str:
     except FileNotFoundError:
         return ""
     except Exception as e:
-        print(f"[read_file] 读取文件时发生错误: {e}")
+        print(f"[read_file] Error occurred while reading the file: {e}")
         return ""
 
 def append_text_to_file(text_to_append: str, file_path: str):
@@ -24,7 +24,7 @@ def append_text_to_file(text_to_append: str, file_path: str):
         with open(file_path, 'a', encoding='utf-8') as file:
             file.write(text_to_append)
     except IOError as e:
-        print(f"[append_text_to_file] 发生错误：{e}")
+        print(f"[append_text_to_file] Error occurred: {e}")
 
 def clear_file_content(filename: str):
     """清空指定文件内容。"""
@@ -32,7 +32,7 @@ def clear_file_content(filename: str):
         with open(filename, 'w', encoding='utf-8') as file:
             pass
     except IOError as e:
-        print(f"[clear_file_content] 无法清空文件 '{filename}' 的内容：{e}")
+        print(f"[clear_file_content] Unable to clear the content of file '{filename}': {e}")
 
 def save_string_to_txt(content: str, filename: str):
     """将字符串保存为 txt 文件（覆盖写）。"""
@@ -40,7 +40,7 @@ def save_string_to_txt(content: str, filename: str):
         with open(filename, 'w', encoding='utf-8') as file:
             file.write(content)
     except Exception as e:
-        print(f"[save_string_to_txt] 保存文件时发生错误: {e}")
+        print(f"[save_string_to_txt] Error occurred while saving the file: {e}")
 
 def save_data_to_json(data: dict, file_path: str) -> bool:
     """将数据保存到 JSON 文件。"""
@@ -49,5 +49,5 @@ def save_data_to_json(data: dict, file_path: str) -> bool:
             json.dump(data, json_file, ensure_ascii=False, indent=4)
         return True
     except Exception as e:
-        print(f"[save_data_to_json] 保存数据到JSON文件时出错: {e}")
+        print(f"[save_data_to_json] Error occurred while saving data to JSON file: {e}")
         return False
