@@ -13,6 +13,7 @@
 </div>
 > A multi-functional novel generator based on large language models, helping you efficiently create long stories with rigorous logic and consistent settings
 ---
+
 ## 📑 Table of Contents
 1. [Environment Preparation](#🛠-Environment-Preparation)
 2. [Project Structure](#erdei-Project-Structure)
@@ -20,7 +21,9 @@
 4. [Running Instructions](#🚀-Running-Instructions)
 5. [Usage Tutorial](#📘-Usage-Tutorial)
 6. [Troubleshooting](#❓-Troubleshooting)
+
 ---
+
 ## 🛠 Environment Preparation
 Ensure the following running conditions are met:
 - **Python 3.9+** runtime environment (recommended 3.10-3.12)
